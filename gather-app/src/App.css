@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: 'Akkurat';
+  margin: 0;
 }
 
 .App-logo {
@@ -26,6 +28,25 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.navBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  padding-left: 50px;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  list-style-type: none;
+  padding-right: 50px;
+  margin: 0;
 }
 
 @keyframes App-logo-spin {

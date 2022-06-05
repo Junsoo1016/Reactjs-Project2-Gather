@@ -1,33 +1,35 @@
-import React from "react"; 
+import React from "react";
+import "./Post.css" 
 
 const Post = () => {
     return(
-       <div>
-           <img src="#" alt="#" />
+       <form className="post">
+
+           <img className="postImage" style={{width: '180px', height: '120px', backgroundColor: 'grey'}} src="#" alt="#" />
 
            <div className="Title">
-            <p className="key"></p>
+            <p className="key">Title:</p>
             <p className="value"></p>
            </div>
 
            <div className="Date">
-            <p className="key"></p>
+            <p className="key">Date:</p>
             <p className="value"></p>
            </div>
 
            <div className="Location">
-            <p className="key"></p>
+            <p className="key">Location:</p>
             <p className="value"></p>
            </div>
 
            <div className="Description">
-            <p className="key"></p>
+            <p className="key">Description:</p>
             <p className="value"></p>
            </div>
-
-           <button>Ask to join</button>
+            
+           <button className="joinBtn" >Ask to join</button>
            
-       </div> 
+       </form> 
     )
 }
 
