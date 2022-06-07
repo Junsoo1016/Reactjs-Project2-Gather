@@ -1,4 +1,4 @@
-.inputBox {
+.loginBox {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,8 +18,17 @@ input {
     height: 150px;
 }
 
-.submitBtn {
+.loginBtn {
     height: 50px;
     font-size: 20px;
+    margin-bottom: 20px;
+    border: 0;
+}
+
+.newAccountBtn {
+    height: 50px;
+    font-size: 20px;
+    margin-bottom: 20px;
     width: 400px;
+    border: 0;
 }

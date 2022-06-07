@@ -3,6 +3,7 @@
     height: 500px;
     padding: 10px;
     border: 1px black solid;
+    margin-top: 40px;
 }
 
 .postImage {
@@ -16,4 +17,10 @@
 .joinBtn {
     padding: 12px 36px;
     font-size: 20px;
+}
+
+.title
+.date
+.location {
+    display: flex;
 }

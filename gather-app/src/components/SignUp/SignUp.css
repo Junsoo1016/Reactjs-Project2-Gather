@@ -1,4 +1,4 @@
-.inputBox {
+.signUpBox {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,12 +14,26 @@ input {
     padding-left: 10px;
 }
 
-.description {
-    height: 150px;
+.name {
+    display: flex;
+    justify-content: space-between;
 }
 
-.submitBtn {
+.nameInput {
+    width: 175px;
+}
+
+.signUpBtn {
     height: 50px;
     font-size: 20px;
+    margin-bottom: 20px;
+    border: 0;
+}
+
+.newAccountBtn {
+    height: 50px;
+    font-size: 20px;
+    margin-bottom: 20px;
     width: 400px;
+    border: 0;
 }
