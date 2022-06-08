@@ -38,8 +38,20 @@
   /* border: 1px black solid; */
 }
 
-a:link { 
+.navTitle {
+  text-decoration: none;   
+}
+
+.navLink { 
   text-decoration: none; 
+}
+
+.navLink:hover { 
+  text-decoration: underline;
+  text-decoration-color: rgb(104,217,155);
+  text-underline-position: below;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 3px;
 }
 
 ul {
@@ -63,4 +75,11 @@ li {
   to {
     transform: rotate(360deg);
   }
+}
+
+.mapWrapper{
+  position: relative;
+  display: block;
+  height: 350px;
+  width: 100%;
 }

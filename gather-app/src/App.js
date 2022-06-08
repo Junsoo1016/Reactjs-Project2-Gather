@@ -16,7 +16,7 @@ function App() {
     id: "",
     password: "",
     confirmPassword: "",
-    valid: 0,
+    valid: true,
     logIn: false
   })
 
@@ -25,10 +25,26 @@ function App() {
       ...signUpForm,
       [e.target.name]: e.target.value}) 
     if(signUpForm.password === signUpForm.confirmPassword) {
-      setSignUpForm(...signUpForm, {valid: true})
-    } else {
-      setSignUpForm(...signUpForm, {valid: false})
-    }
+      setSignUpForm({
+        firstName: signUpForm.firstName,
+        lastName: signUpForm.lastName,
+        id: signUpForm.id,
+        password: signUpForm.password,
+        confirmPassword: e.target.value,
+        valid: true,
+        logIn: false,
+    })
+  } else {
+    setSignUpForm({
+      firstName: signUpForm.firstName,
+      lastName: signUpForm.lastName,
+      id: signUpForm.id,
+      password: signUpForm.password,
+      confirmPassword: e.target.value,
+      valid: false,
+      logIn: false,
+    })
+  }
   }
 
   const [userData, setUserData] = useState([])
@@ -76,7 +92,6 @@ function App() {
   
   //Post Input
   const [postInputForm, setPostInputForm] = useState({
-    image: "",
     title: "",
     date: "",
     location: "",
@@ -102,17 +117,17 @@ function App() {
       
       <nav>
         <div className='navBox'>
-          <Link to="/">
+          <Link className='navTitle' to="/">
           <h1 className='title'>Gather</h1>
           </Link>
           <ul>
-            <Link to="/">
+            <Link className='navLink' to="/">
             <li>Home</li>
             </Link>
-            <Link to="/howToUse">
+            <Link className='navLink' to="/howToUse">
             <li>How to use</li>
             </Link>
-            <Link to="/login">
+            <Link className='navLink' to="/login">
             <li>Log In</li>
             </Link>
           </ul>

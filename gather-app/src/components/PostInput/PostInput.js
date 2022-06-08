@@ -10,7 +10,6 @@ const PostInput = (props) => {
             <h2>Creat a post</h2>
             </div>
 
-            <input onChange={props.handlePostChange} placeholder="Image" name="image"/>
             <input onChange={props.handlePostChange} placeholder="Title" name="title"/>
             <input onChange={props.handlePostChange} placeholder="Date" name="date"/>
             <input onChange={props.handlePostChange} placeholder="Location" name="location"/>

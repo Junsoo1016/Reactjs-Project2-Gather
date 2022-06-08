@@ -1,10 +1,9 @@
 import React from "react";  
 import Post from "../Post/Post";
-import PostInput from "../PostInput/PostInput";
 import {Link} from 'react-router-dom'
 import Map from "../Map/Map";
-
 import './Board.css'
+
 
 const Board = (props) => {
 
@@ -19,15 +18,14 @@ const Board = (props) => {
     }) 
 
     return(
-        <div>
-            {/* <div className="map">
-            Map
-            </div> */}
-            <Map />
+        <div className="board">
+            
+            <Map postList={props.postList}/>
 
             <Link to="/post-input">
                  <button className="postBtn">Create a new post</button>
             </Link>
+
             <div className="postArea">
             {posts}
             </div>

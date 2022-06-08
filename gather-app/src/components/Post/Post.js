@@ -5,8 +5,6 @@ const Post = (props) => {
     return(
        <form className="post">
 
-           <img className="postImage" style={{width: '180px', height: '120px', backgroundColor: 'grey'}} src="{props.image}" alt="#" />
-
            <div className="Title">
             <p className="key">Title:</p>
             <p className="value">{props.title}</p>
