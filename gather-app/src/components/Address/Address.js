@@ -1,15 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
 
 export default function Address(props) {
-  
-  useEffect(() => {
-
-    props.set_address([])
-  },[])
   
   return (
     <div className="App">
@@ -20,12 +15,11 @@ export default function Address(props) {
 
 function LocationInput(props) {
   const [address, setAddress] = useState("");
+
   const handleChangeAddress = (newAddress) => {
     setAddress(newAddress);
-    
-    // console.log(address);
-    
   };
+
   const handleSelectAddress = (newAddress) => {
     setAddress(newAddress);
     console.log(newAddress);
@@ -40,14 +34,11 @@ function LocationInput(props) {
         location: newAddress,
         coordinates: latLng,
         title: props.postInputForm.title,
-      })
-      
+      })  
       )
-    .catch((error) => console.error("Error", error));
-    
+    .catch((error) => console.error("Error", error));   
   };
 
-  
   return (
     <PlacesAutocomplete
       value={address}
@@ -61,7 +52,6 @@ function LocationInput(props) {
               placeholder: "Location",
               className: "location-search-input"
             })}
-            // onChange={props.handlePostChange}
           />
           <div className="autocomplete-dropdown-container">
             {loading && <div>Loading...</div>}

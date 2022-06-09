@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react'
+import React, {useState, useCallback} from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import Geocode from "react-geocode";
 
@@ -22,12 +22,11 @@ function Map(props) {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyAAGkc4dkx03eSa0QgCOijkjgdUJpWgJFQ"
+    googleMapsApiKey: "AIzaSyAwcOSQ6hnqoqiXX_1D1ykHOBAZZ2UorHE"
   })
 
   const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
-    // map.fitBounds(bounds);
     setMap(map)
   }, [])
 
@@ -35,24 +34,6 @@ function Map(props) {
     setMap(null)
   }, [])
 
-  // const convertAddress = () => {
-  //   const locations = props.postList
-  //   .map((post) => Geocode.fromAddress(post.location))
-  //   setAddress(locations)
-  // }
-  
-//   const convertAddress = () => {
-//   Geocode.fromAddress("Eiffel Tower").then(
-//     (response) => {
-//       const { lat, lng } = response.results[0].geometry.location;
-//       setAddress({ lat: lat, lng: lng })
-//       console.log(lat, lng);
-//     },
-//     (error) => {
-//       console.error(error);
-//     }
-//   );
-// }
   console.log(props.postList);
 
   const coordinatesList = props.postList.map((post) => {
@@ -72,8 +53,7 @@ function Map(props) {
       >
         { /* Child components, such as markers, info windows, etc. */ }
         {coordinatesList.map((marker) => {
-          console.log(marker);
-        // return
+        return
         <div>
           <Marker
           position= {{lat: marker.lat, lng: marker.lng}} 

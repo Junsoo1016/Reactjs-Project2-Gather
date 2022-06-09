@@ -5,14 +5,14 @@ import {Link} from 'react-router-dom'
 const HowToUse = () => {
     return(
         <div className="aboutBox">
-            <div className="h1Box">
+            <div className="h1Box" data-aos="flip-right">
             <h1 className="abouth1">Make new friends with activities that you are into on Gather. </h1>
             <Link to="/create-new-account">
                 <button className="signUpBtn">Sign Up</button>
             </Link>
             </div>
 
-            <div className="pBox">
+            <div className="pBox" data-aos="flip-left">
             <p className="aboutp">Gather is a platform for finding and building local communites. Users gather
                 to meet new people, learn new things, find support, get out of their comfort
                 zones, and pursue their passioins, together.
