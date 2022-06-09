@@ -1,8 +1,12 @@
 .App {
   text-align: center;
-  font-family: 'Akkurat';
+  font-family: 'roboto';
 }
 
+body {
+  margin: 0;
+  font-family: 'roboto';
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -29,13 +33,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* border: 1px black solid; */
+  height: 80px;
 }
 
 .title {
   padding-left: 50px;
-  font-size: 26px;
+  font-family: 'Rampart One';
+  font-size: 30px;
   color: rgb(104,217,155);
-  /* border: 1px black solid; */
+  margin: 0;
 }
 
 .navTitle {
@@ -43,7 +50,7 @@
 }
 
 .navLink { 
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .navLink:hover { 

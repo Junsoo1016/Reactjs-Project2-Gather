@@ -63,6 +63,13 @@ function App() {
   //Log In
   const [loginForm, setLoginForm] = useState({
     id: "",
+    password: ""
+  })
+
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    id: "",
     password: "",
     logIn: false
   })
@@ -79,8 +86,15 @@ function App() {
     const user = userData.find((user) => user.id === loginForm.id)
     if(user.password===loginForm.password) {
       console.log("welcome");
+      setUser({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        id: user.id,
+        password: user.password,
+        logIn: true,
+      })
     } else {
-      console.log("password not correct");
+      alert("password not correct");
     }
   }
 
@@ -122,14 +136,17 @@ function App() {
           </Link>
           <ul>
             <Link className='navLink' to="/">
-            <li>Home</li>
+              <li>Home</li>
             </Link>
             <Link className='navLink' to="/howToUse">
-            <li>How to use</li>
+              <li>How to use</li>
             </Link>
-            <Link className='navLink' to="/login">
-            <li>Log In</li>
-            </Link>
+              if({user.logIn === false}) {
+              <Link className='navLink' to="/login"><li>Log In</li></Link>
+            } else {
+              <li>`Hi ${user.name}`</li>
+            }
+
           </ul>
         </div>
       </nav>
