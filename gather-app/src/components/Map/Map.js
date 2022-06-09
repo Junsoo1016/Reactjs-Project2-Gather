@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import Geocode from "react-geocode";
 
@@ -17,6 +17,7 @@ const options = {
 }
 
 function Map(props) {
+  
   const [map, setMap] = useState(null);
 
   const { isLoaded } = useJsApiLoader({
@@ -34,30 +35,31 @@ function Map(props) {
     setMap(null)
   }, [])
 
-  const [address, setAddress] = useState({
-    lat: null,
-    lng: null
-})
-
   // const convertAddress = () => {
   //   const locations = props.postList
   //   .map((post) => Geocode.fromAddress(post.location))
   //   setAddress(locations)
   // }
   
-  console.log(address);
-  const convertAddress = () => {
-  Geocode.fromAddress("Eiffel Tower").then(
-    (response) => {
-      const { lat, lng } = response.results[0].geometry.location;
-      setAddress({ lat: lat, lng: lng })
-      console.log(lat, lng);
-    },
-    (error) => {
-      console.error(error);
-    }
-  );
-}
+//   const convertAddress = () => {
+//   Geocode.fromAddress("Eiffel Tower").then(
+//     (response) => {
+//       const { lat, lng } = response.results[0].geometry.location;
+//       setAddress({ lat: lat, lng: lng })
+//       console.log(lat, lng);
+//     },
+//     (error) => {
+//       console.error(error);
+//     }
+//   );
+// }
+  console.log(props.postList);
+
+  const coordinatesList = props.postList.map((post) => {
+    return post.coordinates
+  })
+
+  console.log(coordinatesList);
 
   return isLoaded ? (
     <GoogleMap
@@ -69,10 +71,20 @@ function Map(props) {
         options={options}
       >
         { /* Child components, such as markers, info windows, etc. */ }
-        {/* <Marker 
-        position={locations}
-        icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-        /> */}
+        {coordinatesList.map((marker) => {
+          console.log(marker);
+        // return
+        <div>
+          <Marker
+          position= {{lat: marker.lat, lng: marker.lng}} 
+          icon={{
+            url:"https://i.ibb.co/4JFPCZP/location-dot-solid.png",
+            scaledSize: new window.google.maps.Size(18,18)
+          }}
+          />
+        </div>
+      })}
+        
       </GoogleMap>
   ) : <h1>Loading</h1>
 }

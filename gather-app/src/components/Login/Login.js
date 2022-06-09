@@ -19,7 +19,7 @@ const Login = (props) => {
             </Link>
             
             <Link to="/create-new-account">
-            <button className="newAccountBtn">Create new account</button>
+            <button className="newAccountBtn">Create New Account</button>
             </Link>
 
         </div>

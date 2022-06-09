@@ -110,7 +110,8 @@ function App() {
     date: "",
     location: "",
     description: "",
-    complete: false
+    complete: false,
+    coordinates: null,
   })
 
   const handlePostChange = (e) => {  
@@ -139,13 +140,13 @@ function App() {
               <li>Home</li>
             </Link>
             <Link className='navLink' to="/howToUse">
-              <li>How to use</li>
+              <li>How To Use</li>
             </Link>
-              if({user.logIn === false}) {
-              <Link className='navLink' to="/login"><li>Log In</li></Link>
+              {!user.logIn ? <Link className='navLink' to="/login"><li>Log In</li></Link> : <li>Hi {user.firstName} </li>} 
+              {/* <Link className='navLink' to="/login"><li>Log In</li></Link>
             } else {
               <li>`Hi ${user.name}`</li>
-            }
+            } */}
 
           </ul>
         </div>
@@ -157,7 +158,7 @@ function App() {
           <Route path="/howToUse" element={<HowToUse/>} />
           <Route path="/login" element={<Login handleLogin={handleLogin} validateLogin={validateLogin}/>} />
           <Route path="/create-new-account" element={<SignUp handleSignUp={handleSignUp} handleValide={handleValide} saveUserData={saveUserData} signUpForm={signUpForm}/>} />
-          <Route path="/post-input" element={<PostInput handlePostChange={handlePostChange} saveUserPost={saveUserPost}/>} />
+          <Route path="/post-input" element={<PostInput handlePostChange={handlePostChange} saveUserPost={saveUserPost} postInputForm={postInputForm} setPostInputForm={setPostInputForm}/>} />
         </Routes>
       </main>
 
