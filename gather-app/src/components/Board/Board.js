@@ -3,7 +3,7 @@ import Post from "../Post/Post";
 import {Link} from 'react-router-dom'
 import Map from "../Map/Map";
 import './Board.css'
-import UserInfo from "../UserInfo/UserInfo";
+import UserWindow from "../UserWindow/UserWindow";
 
 
 const Board = (props) => {
@@ -26,7 +26,7 @@ const Board = (props) => {
         <div className="board">
             
             <Map postList={props.postList}/>
-            <UserInfo user = {props.user}/>
+            {/* <UserWindow user = {props.user}/> */}
 
             <Link to="/post-input">
                  <button className="postBtn">Create a new post</button>

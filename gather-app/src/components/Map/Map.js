@@ -51,7 +51,7 @@ function Map(props) {
         onUnmount={onUnmount}
         options={options}
       >
-        {/* {coordinatesList.map((marker) => (
+        {coordinatesList.map((marker) => (
         <div>
           <Marker
           position= {{lat: marker.lat, lng: marker.lng}} 
@@ -61,7 +61,7 @@ function Map(props) {
           }}
           />
         </div>
-      ))} */}
+      ))}
         
       </GoogleMap>
   ) : <h1>Loading</h1>

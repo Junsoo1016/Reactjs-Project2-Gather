@@ -6,7 +6,7 @@ import PostInput from './components/PostInput/PostInput';
 import HowToUse from './components/HowToUse/HowToUse';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
-import UserInfo from './components/UserInfo/UserInfo';
+import UserWindow from './components/UserWindow/UserWindow';
 
 function App() {
 
@@ -131,7 +131,7 @@ function App() {
     const copy = [...postList]
     const index = postList.indexOf(e)
     console.log(index);
-    // copy[index].title = "a"
+    copy[0].requested = true
     // setPostList(copy)
     // title: copy.title,
     // date: copy.date,
@@ -142,7 +142,7 @@ function App() {
     // requested: true
     // })
   }
-  
+  console.log(postList);
   return (
     <div className="App">
       
