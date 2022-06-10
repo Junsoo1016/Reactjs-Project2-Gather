@@ -8,6 +8,7 @@
     padding: 10px;
     border: 1px black solid;
     margin-bottom: 50px;
+    border: 1px black solid;
 }
 
 .postImage {
@@ -16,18 +17,20 @@
 
 .key {
     text-align: left;
+    font-size: 20px;
+    color: rgb(73, 191, 126);
+    align-items: center;
+    text-align: center;
+}
+
+.value {
+    font-size: 20px;
 }
 
 .joinBtn {
-    padding: 12px 36px;
+    padding: 12px 30px;
     font-size: 20px;
     background-color: rgb(104,217,155);
     color: white;
     border: 0;
-}
-
-.title
-.date
-.location {
-    display: flex;
 }

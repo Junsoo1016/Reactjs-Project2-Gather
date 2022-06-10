@@ -2,6 +2,7 @@ import React from "react";
 import "./Post.css" 
 
 const Post = (props) => {
+    console.log(props.askToJoin);
     return(
        <form className="post">
 
@@ -25,7 +26,7 @@ const Post = (props) => {
             <p className="value">{props.description}</p>
            </div>
             
-           <button className="joinBtn" >Ask to join</button>
+           <button className="joinBtn" onClick={(e) => props.askToJoin(e)}> {!props.requested ? "Ask to join" : "Requested" } </button>
            
        </form> 
     )

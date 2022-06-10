@@ -51,9 +51,7 @@ function Map(props) {
         onUnmount={onUnmount}
         options={options}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
-        {coordinatesList.map((marker) => {
-        return
+        {/* {coordinatesList.map((marker) => (
         <div>
           <Marker
           position= {{lat: marker.lat, lng: marker.lng}} 
@@ -63,7 +61,7 @@ function Map(props) {
           }}
           />
         </div>
-      })}
+      ))} */}
         
       </GoogleMap>
   ) : <h1>Loading</h1>

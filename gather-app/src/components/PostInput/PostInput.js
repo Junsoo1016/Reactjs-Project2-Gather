@@ -16,7 +16,7 @@ const PostInput = (props) => {
             <input onChange={props.handlePostChange} placeholder="Date" name="date"/>
             <Address postInputForm={props.postInputForm} setPostInputForm={props.setPostInputForm} />
             {/* <input onChange={props.handlePostChange} placeholder="Location" name="location"/> */}
-            <input onChange={props.handlePostChange} className="description" placeholder="Descriptioin" name="description"/>
+            <input onChange={props.handlePostChange} className="description" placeholder="Description" name="description"/>
 
             <Link to="/">
             <button onClick={props.saveUserPost} type='submit' className="submitBtn">Submit</button>

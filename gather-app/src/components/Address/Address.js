@@ -34,6 +34,7 @@ function LocationInput(props) {
         location: newAddress,
         coordinates: latLng,
         title: props.postInputForm.title,
+        requested: false
       })  
       )
     .catch((error) => console.error("Error", error));   

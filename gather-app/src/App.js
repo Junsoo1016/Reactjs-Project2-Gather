@@ -6,6 +6,7 @@ import PostInput from './components/PostInput/PostInput';
 import HowToUse from './components/HowToUse/HowToUse';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
+import UserInfo from './components/UserInfo/UserInfo';
 
 function App() {
 
@@ -97,12 +98,6 @@ function App() {
       alert("password not correct");
     }
   }
-
-
-  // const handleLogin = (e) => {
-  //   e.preventDefault()
-  //   const user = userData.find((user) => user.id === e.)
-  // }
   
   //Post Input
   const [postInputForm, setPostInputForm] = useState({
@@ -112,12 +107,16 @@ function App() {
     description: "",
     complete: false,
     coordinates: null,
+    requested: false
   })
 
   const handlePostChange = (e) => {  
     setPostInputForm({
       ...postInputForm,
-      [e.target.name]: e.target.value   
+      [e.target.name]: e.target.value,
+      complete: false,
+      coordinates: null,
+      requested: false   
     })
   }
 
@@ -125,6 +124,23 @@ function App() {
 
   const saveUserPost = () => { 
     setPostList([...postList, postInputForm])    
+  }
+
+  const askToJoin = (e) => {
+    e.preventDefault()
+    const copy = [...postList]
+    const index = postList.indexOf(e)
+    console.log(index);
+    // copy[index].title = "a"
+    // setPostList(copy)
+    // title: copy.title,
+    // date: copy.date,
+    // location: postList.location,
+    // description: postList.description,
+    // complete: false,
+    // coordinates: postList.coordinates,
+    // requested: true
+    // })
   }
   
   return (
@@ -143,18 +159,13 @@ function App() {
               <li>How To Use</li>
             </Link>
               {!user.logIn ? <Link className='navLink' to="/login"><li>Log In</li></Link> : <li>Hi {user.firstName} </li>} 
-              {/* <Link className='navLink' to="/login"><li>Log In</li></Link>
-            } else {
-              <li>`Hi ${user.name}`</li>
-            } */}
-
           </ul>
         </div>
       </nav>
 
       <main>
         <Routes>
-          <Route path="/" element={<Board postList={postList}/>} />
+          <Route path="/" element={<Board user = {user} postList={postList} askToJoin={askToJoin}/>}  />
           <Route path="/howToUse" element={<HowToUse/>} />
           <Route path="/login" element={<Login handleLogin={handleLogin} validateLogin={validateLogin}/>} />
           <Route path="/create-new-account" element={<SignUp handleSignUp={handleSignUp} handleValide={handleValide} saveUserData={saveUserData} signUpForm={signUpForm}/>} />
