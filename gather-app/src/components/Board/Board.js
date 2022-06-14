@@ -26,7 +26,7 @@ const Board = (props) => {
         <div className="board">
             
             <Map postList={props.postList}/>
-            {/* <UserWindow user = {props.user}/> */}
+            <UserWindow user = {props.user}/>
 
             <Link to="/post-input">
                  <button className="postBtn">Create a new post</button>

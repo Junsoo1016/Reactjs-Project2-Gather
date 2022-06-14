@@ -1,0 +1,17 @@
+.userWindow {
+    width: 200px;
+    height: 500px;
+    background-color: rgb(250, 254, 218);
+    position: absolute;
+    transform: translateX(200px);
+    right: 0px;
+}
+
+.userWindowOnClick {
+    width: 200px;
+    height: 500px;
+    background-color: rgb(250, 254, 218);
+    position: absolute;
+    transform: translateX(-200px);
+    right: 0px;
+}

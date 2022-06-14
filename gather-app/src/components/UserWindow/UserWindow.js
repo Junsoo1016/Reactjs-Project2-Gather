@@ -1,9 +1,10 @@
 import React from "react";
+import "./UserWindow.css"
 
 const UserWindow = (props) => {
     console.log(props);
     return (
-        <div>
+        <div className="userWindow">
             <div className="profile">
                 <p>Profile</p>
             </div>
