@@ -3,6 +3,7 @@ import "./Login.css"
 import {Link} from 'react-router-dom'
 
 const Login = (props) => {
+    console.log(props);
     return(
         <form>
         <div className="loginBox">

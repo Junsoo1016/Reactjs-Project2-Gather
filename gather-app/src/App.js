@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import {Routes, Route, Link} from 'react-router-dom'
 import Board from './components/Board/Board'
@@ -7,6 +7,7 @@ import HowToUse from './components/HowToUse/HowToUse';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import UserWindow from './components/UserWindow/UserWindow';
+import axios from 'axios';
 
 function App() {
 
@@ -49,6 +50,10 @@ function App() {
   }
 
   const [userData, setUserData] = useState([])
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/users')
+    .then(res => setUserData(res.data))
+  },[])
 
   const handleSignUp = (e) => {  
     setSignUpForm({
@@ -84,18 +89,18 @@ function App() {
 
   const validateLogin = (e) => {
     e.preventDefault()
-    const user = userData.find((user) => user.id === loginForm.id)
-    if(user.password===loginForm.password) {
+    const user = userData.find((user) => user.userId === loginForm.id)
+    if(user.password == loginForm.password) {
       console.log("welcome");
       setUser({
         firstName: user.firstName,
         lastName: user.lastName,
-        id: user.id,
+        id: user.userId,
         password: user.password,
         logIn: true,
       })
     } else {
-      alert("password not correct");
+      alert("The password you’ve entered is incorrect.");
     }
   }
   
@@ -115,15 +120,19 @@ function App() {
       ...postInputForm,
       [e.target.name]: e.target.value,
       complete: false,
-      coordinates: null,
+      coordinates: {},
       requested: false   
     })
   }
 
   const [postList, setPostList] = useState([])
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/posts')
+    .then(res => setPostList(res.data))
+  },[])
 
-  const saveUserPost = () => { 
-    setPostList([...postList, postInputForm])    
+  const saveUserPost = () => {
+    axios.post(`http://localhost:3000/api/posts/userId/${user.id}`, postInputForm)    
   }
 
   const askToJoin = (e) => {

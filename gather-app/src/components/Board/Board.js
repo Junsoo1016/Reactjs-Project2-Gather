@@ -1,4 +1,4 @@
-import React from "react";  
+import React, { useEffect, useState } from "react";  
 import Post from "../Post/Post";
 import {Link} from 'react-router-dom'
 import Map from "../Map/Map";
@@ -7,20 +7,21 @@ import UserWindow from "../UserWindow/UserWindow";
 
 
 const Board = (props) => {
-
-    const posts = props.postList.map((post, index) => {
-        return <Post 
-        title = {post.title}
-        date = {post.date}
-        location = {post.location}
-        description = {post.description}
-        complete = {post.complete}
-        coordinates = {post.coordinates}
-        requested = {post.requested}
-        askToJoin={props.askToJoin}
-        index={index}
-        />
-    }) 
+            const post = props.postList.map((post, index) => {
+                return <Post
+                id = {post.id} 
+                title = {post.title}
+                date = {post.date}
+                location = {post.location}
+                description = {post.description}
+                complete = {post.complete}
+                coordinates = {post.coordinates}
+                requested = {post.requested}
+                askToJoin={props.askToJoin}
+                index={index}
+                />
+        })
+ 
     // console.log(props);
     return(
         <div className="board">
@@ -33,7 +34,7 @@ const Board = (props) => {
             </Link>
 
             <div className="postArea">
-            {posts}
+            {post}
             </div>
 
         </div>
