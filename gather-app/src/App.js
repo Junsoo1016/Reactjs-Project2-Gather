@@ -132,17 +132,7 @@ function App() {
     const index = postList.indexOf(e)
     console.log(index);
     copy[0].requested = true
-    // setPostList(copy)
-    // title: copy.title,
-    // date: copy.date,
-    // location: postList.location,
-    // description: postList.description,
-    // complete: false,
-    // coordinates: postList.coordinates,
-    // requested: true
-    // })
   }
-  console.log(postList);
   return (
     <div className="App">
       

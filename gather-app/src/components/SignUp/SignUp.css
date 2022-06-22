@@ -12,6 +12,7 @@ input {
     height: 45px;
     font-size: 20px;
     padding-left: 10px;
+    border-radius: 8px;
 }
 
 .name {
@@ -28,6 +29,7 @@ input {
     font-size: 20px;
     margin-bottom: 20px;
     border: 0;
+    border-radius: 8px;
     background-color: rgb(104,217,155);
     color: white;
 }

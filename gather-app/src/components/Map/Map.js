@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useEffect} from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
@@ -24,7 +24,7 @@ function Map(props) {
 
   const coordinatesList = props.postList.map((post) => {
     return (
-      <Marker
+      <MarkerF
       position= {{lat: post.coordinates.lat, lng: post.coordinates.lng}} 
       icon={{
         url:"https://i.ibb.co/4JFPCZP/location-dot-solid.png",
