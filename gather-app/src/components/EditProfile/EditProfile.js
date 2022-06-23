@@ -1,5 +1,4 @@
-import React from "react";
-import './SignUp.css'
+import React, { useEffect } from "react";
 import {Link} from 'react-router-dom'
 
 const EditProfile = (props) => {
@@ -10,17 +9,16 @@ const EditProfile = (props) => {
             </div>
 
             <div className="name">  
-                <input onChange={(e) => props.handleSignUp(e)} className="nameInput" placeholder="First name" name="firstName" />
-                <input onChange={(e) => props.handleSignUp(e)} className="nameInput" placeholder="Last name" name="lastName" />
+                <input onChange={(e) => props.handleProfileForm(e)} className="nameInput" placeholder="First name" name="firstName" />
+                <input onChange={(e) => props.handleProfileForm(e)} className="nameInput" placeholder="Last name" name="lastName" />
+                <input onChange={(e) => props.handleProfileForm(e)} className="ageInput" placeholder="Age" name="age" />
             </div>
-            <input onChange={(e) => props.handleSignUp(e)} placeholder="Password" name="password" />
-            <input onChange={(e) => props.handleValide(e)} placeholder="Confirm password" name="confirmPassword" />
+            <input onChange={(e) => props.handleProfileForm(e)} placeholder="Password" name="password" />
+            <input onChange={(e) => props.handleProfileForm(e)} placeholder="Email address" name="email" />
             
-            <Link to="/login">
-            <button onClick={props.saveUserData} className="submitBtn">Submit</button>
+            <Link to="/account">
+            <button onClick={() => props.editUser()} className="submitBtn">Submit</button>
             </Link>
-
-            {props.signUpForm.valid ? <p></p> : <p style={{color: 'red'}}>Password do not match</p>}
 
         </div>
     )

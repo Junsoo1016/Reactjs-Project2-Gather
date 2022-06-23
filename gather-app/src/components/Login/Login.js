@@ -3,7 +3,6 @@ import "./Login.css"
 import {Link} from 'react-router-dom'
 
 const Login = (props) => {
-    console.log(props);
     return(
         <form>
         <div className="loginBox">
@@ -12,7 +11,7 @@ const Login = (props) => {
             <h2>Login or create account</h2>
             </div>
 
-            <input onChange={(e) => props.handleLogin(e)} placeholder="Id" name="id"/>
+            <input onChange={(e) => props.handleLogin(e)} placeholder="Id" name="userId"/>
             <input onChange={(e) => props.handleLogin(e)} placeholder="Password" name="password"/>
 
             <Link to="/">

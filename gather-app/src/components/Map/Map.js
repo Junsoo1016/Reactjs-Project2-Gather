@@ -16,14 +16,14 @@ const options = {
 }
 
 function Map(props) {
-  console.log(props);
+  // console.log(props);
   const isLoaded = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyAwcOSQ6hnqoqiXX_1D1ykHOBAZZ2UorHE"
   })
 
   const coordinatesList = props.postList.map((post) => {
-    console.log(post.coordinates);
+    // console.log(post.coordinates);
     return (
       <MarkerF
       position= {{lat: post.coordinates.lat, lng: post.coordinates.lng}} 

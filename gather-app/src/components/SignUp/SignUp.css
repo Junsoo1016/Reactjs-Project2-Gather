@@ -21,7 +21,11 @@ input {
 }
 
 .nameInput {
-    width: 175px;
+    width: 140px;
+}
+
+.ageInput {
+    width: 50px;
 }
 
 .submitBtn {

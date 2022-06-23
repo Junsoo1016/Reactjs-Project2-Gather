@@ -12,16 +12,17 @@ const SignUp = (props) => {
             <div className="name">  
                 <input onChange={(e) => props.handleSignUp(e)} className="nameInput" placeholder="First name" name="firstName" />
                 <input onChange={(e) => props.handleSignUp(e)} className="nameInput" placeholder="Last name" name="lastName" />
+                <input onChange={(e) => props.handleSignUp(e)} className="ageInput" placeholder="Age" name="age" />
             </div>
-            <input onChange={(e) => props.handleSignUp(e)} placeholder="Id" name="id" />
+            <input onChange={(e) => props.handleSignUp(e)} placeholder="Id" name="userId" />
             <input onChange={(e) => props.handleSignUp(e)} placeholder="Password" name="password" />
-            <input onChange={(e) => props.handleValide(e)} placeholder="Confirm password" name="confirmPassword" />
+            <input onChange={(e) => props.handleSignUp(e)} placeholder="Email address" name="email" />
             
             <Link to="/login">
-            <button onClick={props.saveUserData} className="submitBtn">Submit</button>
+            <button onClick={() => props.createUser()} className="submitBtn">Submit</button>
             </Link>
 
-            {props.signUpForm.valid ? <p></p> : <p style={{color: 'red'}}>Password do not match</p>}
+            {/* {props.signUpForm.valid ? <p></p> : <p style={{color: 'red'}}>Password do not match</p>} */}
 
         </div>
     )

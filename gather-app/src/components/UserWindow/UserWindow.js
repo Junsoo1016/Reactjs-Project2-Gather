@@ -1,9 +1,10 @@
 import React from "react";
 import "./UserWindow.css"
 import {FaRegUserCircle} from 'react-icons/fa';
+import {Link} from 'react-router-dom'
 
 const UserWindow = (props) => {
-    console.log(props);
+
     return (
         <div className="userWindow">
             <div className="profile">
@@ -12,7 +13,9 @@ const UserWindow = (props) => {
             </div>
 
             <div>
+                <Link to="/account">
                 <p className="aLink aLinkP">Profile</p>
+                </Link>
             </div>
             
             <div className="saved">
@@ -28,7 +31,9 @@ const UserWindow = (props) => {
             </div>
 
             <div>
-                <p className="aLink">Delete Account</p>
+                <Link to="/">
+                <p className="aLink" onClick={() => props.deleteUser()}>Delete Account</p>
+                </Link>
             </div>
         </div>
     )

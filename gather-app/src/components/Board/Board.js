@@ -9,7 +9,7 @@ import UserWindow from "../UserWindow/UserWindow";
 const Board = (props) => {
             const post = props.postList.map((post, index) => {
                 return <Post
-                id = {post.id} 
+                userId = {post.userId} 
                 title = {post.title}
                 date = {post.date}
                 location = {post.location}
@@ -27,7 +27,7 @@ const Board = (props) => {
         <div className="board">
             
             <Map postList={props.postList}/>
-            <UserWindow user = {props.user}/>
+            <UserWindow user = {props.user} deleteUser={props.deleteUser}/>
 
             <Link to="/post-input">
                  <button className="postBtn">Create a new post</button>

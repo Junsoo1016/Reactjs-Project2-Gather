@@ -6,8 +6,10 @@ import PostInput from './components/PostInput/PostInput';
 import HowToUse from './components/HowToUse/HowToUse';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
-import UserWindow from './components/UserWindow/UserWindow';
 import axios from 'axios';
+import UserBoard from './components/UserBoard/UserBoard';
+import EditProfile from './components/EditProfile/EditProfile';
+import { RiFileUploadLine } from 'react-icons/ri';
 
 function App() {
 
@@ -15,45 +17,67 @@ function App() {
   const [signUpForm, setSignUpForm] = useState({
     firstName: "",
     lastName: "",
-    id: "",
+    age: "",
+    userId: "",
     password: "",
-    confirmPassword: "",
-    valid: true,
+    email: "",
     logIn: false
   })
 
-  const handleValide = (e) => { 
-    setSignUpForm({
-      ...signUpForm,
-      [e.target.name]: e.target.value}) 
-    if(signUpForm.password === signUpForm.confirmPassword) {
-      setSignUpForm({
-        firstName: signUpForm.firstName,
-        lastName: signUpForm.lastName,
-        id: signUpForm.id,
-        password: signUpForm.password,
-        confirmPassword: e.target.value,
-        valid: true,
-        logIn: false,
-    })
-  } else {
-    setSignUpForm({
-      firstName: signUpForm.firstName,
-      lastName: signUpForm.lastName,
-      id: signUpForm.id,
-      password: signUpForm.password,
-      confirmPassword: e.target.value,
-      valid: false,
-      logIn: false,
-    })
-  }
-  }
+ 
 
+  // const handleValide = (e) => { 
+  //   setSignUpForm({
+  //     ...signUpForm,
+  //     [e.target.name]: e.target.value}) 
+  //   if(signUpForm.password === signUpForm.confirmPassword) {
+  //     setSignUpForm({
+  //       firstName: signUpForm.firstName,
+  //       lastName: signUpForm.lastName,
+  //       id: signUpForm.id,
+  //       password: signUpForm.password,
+  //       confirmPassword: e.target.value,
+  //       valid: true,
+  //       logIn: false,
+  //   })
+  // } else {
+  //   setSignUpForm({
+  //     firstName: signUpForm.firstName,
+  //     lastName: signUpForm.lastName,
+  //     id: signUpForm.id,
+  //     password: signUpForm.password,
+  //     confirmPassword: e.target.value,
+  //     valid: false,
+  //     logIn: false,
+  //   })
+  // }
+  // }
+
+  //UserData
   const [userData, setUserData] = useState([])
+  //Get User Data before it renders
   useEffect(() => {
     axios.get('http://localhost:3000/api/users')
     .then(res => setUserData(res.data))
-  },[])
+  },[userData])
+
+  const deleteUser = () => {
+    console.log("delete user");
+    console.log(user.userId);
+    axios.delete(`http://localhost:3000/api/users/userId/${user.userId}`)
+    .then(res => {
+      setUser({
+        ...user,
+        logIn: false
+      })
+    })
+    .then(res => document.location.reload())
+  }
+
+  const createUser = () => {
+    console.log(userData);
+    axios.post('http://localhost:3000/api/users/', signUpForm)
+  }
 
   const handleSignUp = (e) => {  
     setSignUpForm({
@@ -62,22 +86,47 @@ function App() {
     })
   }
 
-  const saveUserData = () => { 
-    setUserData([...userData, signUpForm])    
+  // const saveUserData = () => { 
+  //   setUserData([...userData, signUpForm])    
+  // }
+
+  //User logged in
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    age: null,
+    userId: null,
+    password: "",
+    email: "",
+    logIn: false
+  })
+
+  const [editProfileForm, seteditProfileForm] = useState({
+    firstName: "",
+    lastName: "",
+    age: "",
+    userId: user.userId,
+    password: "",
+    email: "",
+    logIn: false
+  })
+
+  const handleProfileForm = (e) => {
+    seteditProfileForm({
+      ...editProfileForm,
+      [e.target.name]: e.target.value,
+      userId: user.userId   
+    })
+  }
+
+  const editUser = () => {
+    axios.put(`http://localhost:3000/api/users/userId/${user.id}`, editProfileForm)
   }
 
   //Log In
   const [loginForm, setLoginForm] = useState({
-    id: "",
+    userId: "",
     password: ""
-  })
-
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    id: "",
-    password: "",
-    logIn: false
   })
 
   const handleLogin = (e) => {  
@@ -87,16 +136,17 @@ function App() {
     })
   }
 
-  const validateLogin = (e) => {
-    e.preventDefault()
-    const user = userData.find((user) => user.userId === loginForm.id)
+  const validateLogin = () => {
+    const user = userData.find((user) => user.userId === loginForm.userId)
     if(user.password == loginForm.password) {
       console.log("welcome");
       setUser({
         firstName: user.firstName,
         lastName: user.lastName,
-        id: user.userId,
+        age: user.age,
+        userId: user.userId,
         password: user.password,
+        email: user.email,
         logIn: true,
       })
     } else {
@@ -126,13 +176,14 @@ function App() {
   }
 
   const [postList, setPostList] = useState([])
+
   useEffect(() => {
     axios.get('http://localhost:3000/api/posts')
     .then(res => setPostList(res.data))
-  },[])
+  },[postList])
 
   const saveUserPost = () => {
-    axios.post(`http://localhost:3000/api/posts/userId/${user.id}`, postInputForm)    
+    axios.post(`http://localhost:3000/api/posts/userId/${user.userId}`, postInputForm)   
   }
 
   const askToJoin = (e) => {
@@ -164,11 +215,13 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<Board user = {user} postList={postList} askToJoin={askToJoin}/>}  />
+          <Route path="/" element={<Board user = {user} postList={postList} askToJoin={askToJoin} deleteUser={deleteUser}/>}  />
           <Route path="/howToUse" element={<HowToUse/>} />
           <Route path="/login" element={<Login handleLogin={handleLogin} validateLogin={validateLogin}/>} />
-          <Route path="/create-new-account" element={<SignUp handleSignUp={handleSignUp} handleValide={handleValide} saveUserData={saveUserData} signUpForm={signUpForm}/>} />
+          <Route path="/create-new-account" element={<SignUp handleSignUp={handleSignUp} signUpForm={signUpForm} createUser={createUser}/>} />
           <Route path="/post-input" element={<PostInput handlePostChange={handlePostChange} saveUserPost={saveUserPost} postInputForm={postInputForm} setPostInputForm={setPostInputForm}/>} />
+          <Route path="/account" element={<UserBoard user = {user}/>}/>
+          <Route path="/edit-profile" element={<EditProfile user = {user} editUser={editUser} handleSignUp={handleSignUp} signUpForm={signUpForm} handleProfileForm={handleProfileForm}/>}/>
         </Routes>
       </main>
 
